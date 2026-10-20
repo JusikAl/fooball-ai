@@ -1,20 +1,20 @@
 Ai-Football
 
 ai-football/
-├── main.py
-├── config.py
-├── requirements.txt
+├── main.py - запуск игры 
+├── config.py - Конфигурации
+├── requirements.txt - Прост библиотеки
 │
 ├── game/
-│   ├── engine.py
-│   ├── pitch.py
-│   ├── ball.py
-│   ├── player.py
-│   ├── rules.py
-│   └── match.py
+│   ├── engine.py - Основной пайгейм файл для запуска игры
+│   ├── pitch.py - Поле
+│   ├── ball.py - Мяч
+│   ├── player.py - Игроки 
+│   ├── rules.py - правила
+│   └── match.py - матч
 │
 ├── agents/
-│   ├── base_agent.py
+│   ├── base_agent.py 
 │   ├── rule_based.py
 │   └── team_strategy.py
 │
