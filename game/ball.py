@@ -15,6 +15,9 @@ class Ball:
     
     def update(self):
         self.position += self.velocity
+        self.velocity *= 0.98
+        if self.velocity.length() <= 0.1:
+            self.velocity = pygame.Vector2(0, 0)
         
     def bounce_from(self, player_position):
         direction = self.position - player_position

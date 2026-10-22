@@ -21,6 +21,7 @@ class GameEngine:
         self.rules = Rules()
         self.player1 = Player(self.screen, (200, 400), BLUE_TEAM_COLOR, BLUE_CONTROLS)
         self.player2 = Player(self.screen, (800, 400), RED_TEAM_COLOR, RED_CONTROLS)
+        self.players = [self.player1, self.player2]
         
     def run(self):
         while True:
@@ -31,10 +32,11 @@ class GameEngine:
                     pygame.quit()
                     sys.exit()
             
-            distance = self.player1.position.distance_to(self.ball.position)
+            for i in self.players:
+                distance = i.position.distance_to(self.ball.position)
             
-            if distance <= self.player1.player_radius + self.ball.radius:
-                self.ball.bounce_from(self.player1.position)
+                if distance <= i.player_radius + self.ball.radius:
+                    self.ball.bounce_from(i.position)
             
             self.ball.update()
             self.rules.check_out(self.ball.position)
