@@ -1,6 +1,8 @@
+from turtle import right
+
 import pygame 
 
-from config import BALL_RADIUS
+from config import BALL_RADIUS, LEFT, RIGHT, BOTTOM, TOP
 
 class Ball:
     def __init__(self, screen):
@@ -25,3 +27,20 @@ class Ball:
         if direction.length_squared() > 0:
             direction = direction.normalize()
             self.velocity = direction * self.kick_speed
+            
+    def check_wall_collision(self):
+        if self.position.x - self.radius < LEFT: 
+            self.velocity.x *= -1
+            self.position.x = LEFT + self.radius
+            
+        if self.position.x + self.radius > RIGHT:
+            self.velocity.x *= -1
+            self.position.x = RIGHT - self.radius
+        
+        if self.position.y - self.radius < TOP:
+            self.velocity.y *= -1
+            self.position.y = TOP + self.radius
+            
+        if self.position.y + self.radius > BOTTOM:
+            self.velocity.y *= -1
+            self.position.y = BOTTOM - self.radius

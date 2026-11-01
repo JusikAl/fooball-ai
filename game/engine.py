@@ -39,6 +39,7 @@ class GameEngine:
                     self.ball.bounce_from(i.position)
             
             self.ball.update()
+            self.ball.check_wall_collision()
             self.rules.check_out(self.ball.position)
             self.pitch.draw()
             self.ball.draw()
