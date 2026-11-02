@@ -18,7 +18,7 @@ class GameEngine:
         self.clock = pygame.time.Clock()
         self.pitch = Pitch(self.screen)
         self.ball = Ball(self.screen)
-        self.rules = Rules()
+        self.rules = Rules(self.ball)
         self.player1 = Player(self.screen, (200, 400), BLUE_TEAM_COLOR, BLUE_CONTROLS)
         self.player2 = Player(self.screen, (800, 400), RED_TEAM_COLOR, RED_CONTROLS)
         self.players = [self.player1, self.player2]
@@ -40,7 +40,7 @@ class GameEngine:
             
             self.ball.update()
             self.ball.check_wall_collision()
-            self.rules.check_out(self.ball.position)
+            self.rules.check_out()
             self.pitch.draw()
             self.ball.draw()
             self.player1.update()

@@ -1,5 +1,3 @@
-from turtle import right
-
 import pygame 
 
 from config import BALL_RADIUS, LEFT, RIGHT, BOTTOM, TOP

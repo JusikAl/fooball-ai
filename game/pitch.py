@@ -17,3 +17,11 @@ class Pitch:
         pygame.draw.rect(self.screen, (255, 255, 255), (900, 350, 50, 100), 5)  # Draw the right goal
         pygame.draw.circle(self.screen, (255, 255, 255), (150, 400), 10, 5) # Draw left penalty spot
         pygame.draw.circle(self.screen, (255, 255, 255), (850, 400), 10, 5) # Draw right penalty spot
+        
+        # Left goal
+        pygame.draw.rect(self.screen, (180, 180, 180), (10, 350, 40, 100), 2)
+        pygame.draw.rect(self.screen, (255, 255, 255), (10, 350, 40, 100), 4)
+
+        # Right goal
+        pygame.draw.rect(self.screen, (180, 180, 180), (950, 350, 40, 100), 2)
+        pygame.draw.rect(self.screen, (255, 255, 255), (950, 350, 40, 100), 4)

@@ -13,7 +13,6 @@ class Player:
         self.speed = PLAYER_SPEED
         self.controls = controls
         self.player_color = player_color
-        self.rules = Rules()
         
     def draw_player(self):
         pygame.draw.circle(self.screen, self.player_color, self.position, self.player_radius)
@@ -39,7 +38,7 @@ class Player:
         
         new_position += direction * self.speed
         
-        if not self.rules.player_out(new_position):
+        if not Rules.player_out(new_position):
             self.position = new_position
             
         
