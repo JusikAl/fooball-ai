@@ -1,7 +1,6 @@
 import pygame
-from pygame import key
 
-from config import PLAYER_RADIUS, PLAYER_SPEED, RED_CONTROLS, BLUE_CONTROLS 
+from config import PLAYER_RADIUS, PLAYER_SPEED
 from game.rules import Rules
 
 class Player:

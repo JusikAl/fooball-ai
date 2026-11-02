@@ -22,6 +22,9 @@ class GameEngine:
         self.player1 = Player(self.screen, (200, 400), BLUE_TEAM_COLOR, BLUE_CONTROLS)
         self.player2 = Player(self.screen, (800, 400), RED_TEAM_COLOR, RED_CONTROLS)
         self.players = [self.player1, self.player2]
+        self.score_red = 0
+        self.score_blue = 0
+        self.font = pygame.font.Font(None, 36)
         
     def run(self):
         while True:
@@ -38,10 +41,29 @@ class GameEngine:
                 if distance <= i.player_radius + self.ball.radius:
                     self.ball.bounce_from(i.position)
             
+            
             self.ball.update()
-            self.ball.check_wall_collision()
-            self.rules.check_out()
+            goal = self.rules.check_goal()
+
+            if goal is not None:
+                if goal == "Red":
+                    self.score_red += 1
+                else:
+                    self.score_blue += 1
+                self.rules.reset_ball()
+            else:
+                self.ball.check_wall_collision()
+                self.rules.check_out()
+                          
             self.pitch.draw()
+            
+            score = self.font.render(
+                f"{self.score_blue} : {self.score_red}",
+                True,
+                (255, 255, 255)
+            )
+            self.screen.blit(score, (475, 15))
+            
             self.ball.draw()
             self.player1.update()
             self.player1.draw_player()

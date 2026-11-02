@@ -24,14 +24,16 @@ class Ball:
 
         if direction.length_squared() > 0:
             direction = direction.normalize()
-            self.velocity = direction * self.kick_speed
+            self.velocity = direction * self.kick_speed * 0.5
+            if self.velocity.length() > self.kick_speed * 2:
+                self.velocity.scale_to_length(self.kick_speed * 2)
             
     def check_wall_collision(self):
-        if self.position.x - self.radius < LEFT: 
+        if self.position.x - self.radius < LEFT and not (350 <= self.position.y <= 450): 
             self.velocity.x *= -1
             self.position.x = LEFT + self.radius
             
-        if self.position.x + self.radius > RIGHT:
+        if self.position.x + self.radius > RIGHT and not (350 <= self.position.y <= 450):
             self.velocity.x *= -1
             self.position.x = RIGHT - self.radius
         
